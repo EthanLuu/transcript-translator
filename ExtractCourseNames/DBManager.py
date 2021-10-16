@@ -1,4 +1,5 @@
 import pymysql
+from pymysql import cursors
 
 
 class DBManager:
@@ -7,7 +8,7 @@ class DBManager:
                                           password=password, database=database)
         pass
     
-    def isRepeated(self, chinese_name):
+    def is_repeated(self, chinese_name):
         cursor = self.connection.cursor()
         sql = 'select * from course_names where chinese_name = "%s"' % (chinese_name)
         try:
@@ -18,8 +19,19 @@ class DBManager:
         
         return res and len(res) != 0
 
+    def select_all_courses(self):
+        cursor = self.connection.cursor()
+        sql = 'select * from course_names'
+        try:
+            cursor.execute(sql)
+        except:
+            print("DB select all courses error, raw sql: " + sql)
+        
+        res = cursor.fetchall()
+        return res
+        
     def insert_course(self, chinese_name, english_name):
-        if self.isRepeated(chinese_name):
+        if self.is_repeated(chinese_name):
             return
         cursor = self.connection.cursor()
         sql = 'insert into course_names (chinese_name, english_name) values ( "%s",  "%s")' % (chinese_name, english_name)
