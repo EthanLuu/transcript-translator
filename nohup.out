@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "DataLoader.py", line 22, in <module>
+    main()
+  File "DataLoader.py", line 15, in main
+    course_dic = pdf.get_all_course_names(table)
+  File "/www/wwwroot/transcript-translator/PDFParser.py", line 50, in get_all_course_names
+    table = page.extract_table()
+AttributeError: 'NoneType' object has no attribute 'extract_table'
+None
+Traceback (most recent call last):
+  File "DataLoader.py", line 22, in <module>
+    main()
+  File "DataLoader.py", line 17, in main
+    for chinese_name, english_name in course_dic.items():
+AttributeError: 'NoneType' object has no attribute 'items'
+Traceback (most recent call last):
+  File "DataLoader.py", line 24, in <module>
+    main()
+  File "DataLoader.py", line 15, in main
+    course_dic = pdf.get_all_course_names(table)
+  File "/www/wwwroot/transcript-translator/PDFParser.py", line 52, in get_all_course_names
+    table = page.extract_table()
+AttributeError: 'list' object has no attribute 'extract_table'
