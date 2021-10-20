@@ -5,7 +5,7 @@ from PDFParser import PDFParser
 
 
 def save_to_db():
-    db = DBManager("localhost", "course-info",
+    db = DBManager("110.42.144.216", "course-info",
                    "ahpR27jL3BTmf2GL", "course-info")
 
     pdf = PDFParser("./assets/plan_2018.pdf")
@@ -40,7 +40,8 @@ def save_to_json():
 
 
 def main():
-    save_to_json()
+    # save_to_json()
+    save_to_db()
 
 
 if __name__ == "__main__":
