@@ -1,22 +1,11 @@
-import file from "../assets/courses.json";
-
 export interface CourseName {
     id: number,
-    chinese: string,
-    english: string
+    chinese_name: string,
+    english_name: string
 }
 
-export const useCourseNames = () => {
-    const coursesData = file.data;
-    const courseNames: CourseName[] = []
-    coursesData.map(courseData => {
-        const obj = JSON.parse(courseData)
-        courseNames.push({
-            id: obj.id,
-            chinese: obj.chinese_name,
-            english: obj.english_name
-        })
-    })
-
-    return courseNames;
+export const fetchAllCourseNames = async () => {
+    const response = await fetch("https://cdn.ethanloo.cn/course_names.json");
+    const coursesData = await response.json();
+    return coursesData as CourseName[];
 }

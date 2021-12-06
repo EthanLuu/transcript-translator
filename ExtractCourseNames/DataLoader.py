@@ -8,7 +8,7 @@ def save_to_db():
     db = DBManager("110.42.144.216", "course-info",
                    "ahpR27jL3BTmf2GL", "course-info")
 
-    pdf = PDFParser("./assets/plan_2018.pdf")
+    pdf = PDFParser("./assets/2019-理工科教学手册.pdf")
 
     for page in pdf.pages:
         if not page:
@@ -33,15 +33,15 @@ def save_to_json():
             "chinese_name": chinese_name,
             "english_name": english_name
         }
-        lst.append(json.dumps(obj))
+        lst.append(obj)
 
-    with open("./ExtractCourseNames/assets/courses.json", "w") as f:
-        json.dump({"data": lst}, f)
+    with open("./assets/courses.json", "w") as f:
+        json.dump(lst, f)
 
 
 def main():
-    # save_to_json()
-    save_to_db()
+    save_to_json()
+    # save_to_db()
 
 
 if __name__ == "__main__":

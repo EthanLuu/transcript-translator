@@ -39,10 +39,16 @@ class PDFParser:
         for line in table:
             if len(line) < 3:
                 continue
-            idx = 1
-            if line[0] == None or line[1].isdigit():
-                idx += 1
-            course_name = line[idx]
+            idx = 0
+            for i, value in enumerate(line):
+                if not value:
+                    continue
+                if len(value) == 8:
+                    idx = i
+                    break
+            if idx >= len(line) or not line[idx] or len(line[idx]) != 8:
+                continue
+            course_name = line[idx + 1]
             self.parse_course_name(course_name, course_dic)
         return course_dic
 

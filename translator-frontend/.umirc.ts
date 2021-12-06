@@ -9,6 +9,6 @@ export default defineConfig({
   ],
   fastRefresh: {},
   mfsu: {},
-  favicon: "http://cdn.ethanloo.cn/img/favicon.png",
+  favicon: "https://cdn.ethanloo.cn/img/favicon.png",
   title: "课程名称辅助翻译"
 });
