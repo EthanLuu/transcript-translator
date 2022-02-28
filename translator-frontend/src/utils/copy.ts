@@ -6,3 +6,10 @@ export const copyToClipBoard = (text: string, tip?: string) => {
     message.success(tip);
   }
 };
+
+export const copyAllToClipBoard = (textArr: string[], tip?: string) => {
+  navigator.clipboard.writeText(textArr.join('\n'));
+  if (tip) {
+    message.success(tip);
+  }
+};
